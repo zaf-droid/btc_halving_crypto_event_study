@@ -26,10 +26,10 @@ def read_users(session: Annotated[Session, Depends(get_session)],
     return users
 
 
-@router.get("/{User_id}", response_model=UserOut)
+@router.get("/{user_id}", response_model=UserOut)
 def read_user(user_id: uuid.UUID, session: Annotated[Session, Depends(get_session)]):
     user = session.get(User, user_id)
-    if not User:
+    if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
