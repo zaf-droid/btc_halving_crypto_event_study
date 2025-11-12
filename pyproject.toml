@@ -9,5 +9,6 @@ dependencies = [
     "polars>=1.35.1",
     "pwdlib[argon2]>=0.3.0",
     "pyjwt>=2.10.1",
+    "pytest>=9.0.0",
     "sqlmodel>=0.0.27",
 ]
