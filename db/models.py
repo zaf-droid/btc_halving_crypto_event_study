@@ -1,6 +1,4 @@
 from sqlmodel import Field, SQLModel, Relationship
-from typing import Annotated
-from pydantic import EmailStr
 import uuid
 from schemas.user import  UserBase
 
@@ -8,3 +6,13 @@ class User(UserBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     hashed_password: str = Field(max_length=100)
 
+class OHLC(SQLModel, table=True):
+    base_currency: str = Field(max_length=15, primary_key=True)
+    quote_currency: str = Field(max_length=15, primary_key=True)
+    timestamp: str = Field(max_length=50, primary_key=True)
+    interval: str = Field(max_length=10, primary_key=True)
+    open: float
+    high: float
+    low: float
+    close: float
+    volume: float
