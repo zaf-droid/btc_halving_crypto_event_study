@@ -6,9 +6,7 @@ import polars as pl
 class CryptoDownloader:
     _base_url = 'https://www.bitstamp.net/api/v2/'
 
-    _start_dates_dic = {'eth': 1502841600,
-                        'btc': 1274496000,
-                        'xrp': 1481846400}
+    _start_date = 1274496000
 
     def __init__(self, exchange: str = 'bitstamp') -> None:
         self.exchange = exchange
@@ -23,7 +21,7 @@ class CryptoDownloader:
         if end is None:
             end = int(time.time())
         if start is None:
-            start = self._start_dates_dic[base_currency]
+            start = self._start_date
         df_list = []
         step = granularity * 999
         time_interval = time_utils.granularity_to_interval(granularity)
