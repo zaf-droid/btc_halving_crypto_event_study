@@ -34,7 +34,6 @@ async def get_event_study_results(event_study_params: Annotated[EventStudyParams
     event_days_list = session.exec(
         select(Events.timestamp).where(Events.event_name == event_study_params.event_name)
     ).all()
-    print(event_days_list)
 
     data = get_event_data(session=session,
                           window_after_event=event_study_params.window_after_event,

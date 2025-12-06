@@ -14,11 +14,6 @@ def create_event(session: Session, event_params: EventParams) -> Events:
     session.refresh(event)
     return event
 
-def get_distinct_categories(session: Session):
-    result = session.exec(select(Events.event_name).distinct())
-    return [r for r in result]
-
-
 
 def get_event_data(session: Session,
                    window_before_event: int,
