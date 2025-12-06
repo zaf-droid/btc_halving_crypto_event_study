@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from routers import users, ohlc, event_study
-from db.database import create_db_and_tables
+from db.database import create_db_and_tables, engine
 from services.utils.create_default_data import insert_btc_halving_dates
 
 app = FastAPI()
@@ -9,7 +9,7 @@ app = FastAPI()
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-    insert_btc_halving_dates()
+    insert_btc_halving_dates(engine)
 
 app.include_router(users.router)
 app.include_router(ohlc.router)

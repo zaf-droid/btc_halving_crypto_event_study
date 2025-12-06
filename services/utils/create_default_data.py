@@ -1,8 +1,7 @@
 from db.models import Events
 from sqlmodel import Session, select
-from db.database import engine
 
-def insert_btc_halving_dates():
+def insert_btc_halving_dates(engine):
     event_name = 'BTC Halving'
     description = 'dates when Bitcoin halving events occurred'
 
