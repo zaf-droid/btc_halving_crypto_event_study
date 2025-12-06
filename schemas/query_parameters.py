@@ -10,7 +10,7 @@ class QueryParams(BaseModel):
 class EventParams(SQLModel):
     event_name: str = Field(max_length=50, index=True)
     description: str
-    timestamp: int = Field(max_length=50)
+    timestamp: int = Field(ge=0)
 
 class EventStudyParams(BaseModel):
     window_before_event: Optional[int] = 30

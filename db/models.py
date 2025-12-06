@@ -10,7 +10,7 @@ class User(UserBase, table=True):
 class OHLC(SQLModel, table=True):
     base_currency: str = Field(max_length=15, primary_key=True)
     quote_currency: str = Field(max_length=15, primary_key=True)
-    timestamp: int = Field(max_length=50, primary_key=True)
+    timestamp: int = Field(ge=0, primary_key=True)
     interval: str = Field(max_length=10, primary_key=True)
     open: float
     high: float
